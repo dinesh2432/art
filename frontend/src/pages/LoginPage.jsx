@@ -29,7 +29,7 @@ const LoginPage = () => {
 
     try {
       await login(formData.email, formData.password)
-      navigate('/user-type')
+      navigate('/customer/dashboard')
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed')
     } finally {
