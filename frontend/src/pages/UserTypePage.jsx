@@ -7,7 +7,8 @@ const UserTypePage = () => {
 
   const handleUserTypeSelection = (type) => {
     if (type === 'customer') {
-      navigate('/customer/dashboard')
+      // Redirect to login with customer type info
+      navigate('/login', { state: { userType: 'customer' } })
     } else if (type === 'seller') {
       navigate('/seller/register')
     }
@@ -27,7 +28,7 @@ const UserTypePage = () => {
           {/* Customer Option */}
           <div 
             onClick={() => handleUserTypeSelection('customer')}
-            className="bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:shadow-xl transition-shadow border-2 border-transparent hover:border-primary-500"
+            className="bg-white rounded-lg shadow-lg p-8 cursor-pointer hover:shadow-xl transition-shadow border-2 border-transparent hover:border-blue-500"
           >
             <div className="text-center">
               <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
@@ -43,9 +44,9 @@ const UserTypePage = () => {
                 <p>✓ Track orders and delivery</p>
                 <p>✓ Review and rate products</p>
               </div>
-              <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+              <div className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
                 Continue as Customer
-              </button>
+              </div>
             </div>
           </div>
 
@@ -68,9 +69,9 @@ const UserTypePage = () => {
                 <p>✓ Access to suppliers</p>
                 <p>✓ Manage orders efficiently</p>
               </div>
-              <button className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold">
+              <div className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-semibold">
                 Continue as Seller
-              </button>
+              </div>
             </div>
           </div>
         </div>
