@@ -26,7 +26,7 @@ function App() {
       <AuthProvider>
         <div className="min-h-screen bg-gray-50">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/user-type" element={<UserTypePage />} />
@@ -35,7 +35,7 @@ function App() {
             <Route path="/seller/kyc" element={<SellerKYC />} />
             <Route path="/seller/dashboard" element={<SellerDashboard />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/home" element={<HomePage />} />
           </Routes>
         </div>
         <Toaster position="top-right" />
