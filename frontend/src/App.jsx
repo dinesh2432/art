@@ -13,6 +13,7 @@ import SellerRegistration from './pages/SellerRegistration'
 import SellerKYC from './pages/SellerKYC'
 import SellerDashboard from './pages/SellerDashboard'
 import ProductDetail from './pages/ProductDetail'
+import LandingPage from './pages/LandingPage'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/seller/kyc" element={<SellerKYC />} />
             <Route path="/seller/dashboard" element={<SellerDashboard />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/landing" element={<LandingPage />} />
           </Routes>
         </div>
         <Toaster position="top-right" />
