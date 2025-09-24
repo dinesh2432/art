@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://art-1t0x.onrender.com/' || 'http://localhost:5000/api'
+export const API_BASE_URL = 'https://art-1t0x.onrender.com' || 'http://localhost:5000/api'
 
 export const ROUTES = {
   HOME: '/',
