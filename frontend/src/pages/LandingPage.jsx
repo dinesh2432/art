@@ -73,16 +73,56 @@ const LandingPage = () => {
   ]
 
   // Categories
-  const categories = [
-    { name: 'Pottery', icon: '🏺', count: '2,500+ items', color: 'bg-orange-100 text-orange-600' },
-    { name: 'Textiles', icon: '🧵', count: '3,200+ items', color: 'bg-purple-100 text-purple-600' },
-    { name: 'Jewelry', icon: '💍', count: '1,800+ items', color: 'bg-yellow-100 text-yellow-600' },
-    { name: 'Woodwork', icon: '🪵', count: '1,400+ items', color: 'bg-green-100 text-green-600' },
-    { name: 'Metalwork', icon: '⚒️', count: '980+ items', color: 'bg-blue-100 text-blue-600' },
-    { name: 'Paintings', icon: '🎨', count: '2,100+ items', color: 'bg-pink-100 text-pink-600' },
-    { name: 'Leather', icon: '👜', count: '750+ items', color: 'bg-amber-100 text-amber-600' },
-    { name: 'Sculptures', icon: '🗿', count: '650+ items', color: 'bg-gray-100 text-gray-600' }
-  ]
+ const categories = [
+  { 
+    name: 'Pottery', 
+    image: 'https://m.media-amazon.com/images/I/61hV8lwDOsL.jpg', 
+    count: '2,500+ items', 
+    color: 'bg-orange-100 text-orange-600' 
+  },
+  { 
+    name: 'Textiles', 
+    image: 'https://5.imimg.com/data5/QJ/PF/DV/SELLER-71011819/sofa-fabric-500x500-500x500.jpg', 
+    count: '3,200+ items', 
+    color: 'bg-purple-100 text-purple-600' 
+  },
+  { 
+    name: 'Jewelry', 
+    image: 'https://media.licdn.com/dms/image/v2/C5612AQGYEAGRcu0Pow/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1648716520025?e=2147483647&v=beta&t=_NV4L741vxIn6dJRpP0lE6QtjcxvXZN9NeVll4CgKUg', 
+    count: '1,800+ items', 
+    color: 'bg-yellow-100 text-yellow-600' 
+  },
+  { 
+    name: 'Woodwork', 
+    image: 'https://ashandcompany.co.uk/cdn/shop/files/Learn-hand-tool-woodworking-on-a-one-day-beginners-introduction-to-woodwork-course-at-Ash-and-Co.jpg?v=1737478744&width=1946', 
+    count: '1,400+ items', 
+    color: 'bg-green-100 text-green-600' 
+  },
+  { 
+    name: 'Scented Candles', 
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCNpCyHE1GspRlxF-VZKe6BhTaa6qIfgeHQ&s', 
+    count: '980+ items', 
+    color: 'bg-blue-100 text-blue-600' 
+  },
+  { 
+    name: 'Paintings', 
+    image: 'https://5.imimg.com/data5/RA/CW/JK/SELLER-79335428/all-painting-work.jpg', 
+    count: '2,100+ items', 
+    color: 'bg-pink-100 text-pink-600' 
+  },
+  { 
+    name: 'Leather', 
+    image: 'https://www.craftshades.com/wp-content/uploads/2017/08/IMG_20240602_133357.jpg', 
+    count: '750+ items', 
+    color: 'bg-amber-100 text-amber-600' 
+  },
+  { 
+    name: 'Sculptures', 
+    image: 'https://www.thisiscolossal.com/wp-content/uploads/2015/06/ghastlynights.jpg', 
+    count: '650+ items', 
+    color: 'bg-gray-100 text-gray-600' 
+  }
+]
 
   // Features
   const features = [
@@ -123,7 +163,7 @@ const LandingPage = () => {
       location: 'Mumbai, Maharashtra',
       text: 'The quality of handmade products here is exceptional. I found the perfect pottery set for my home, and the artisan was so helpful in customizing it to my needs.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face'
+      image: 'https://i0.wp.com/masteringportraitphotography.com/wp-content/uploads/2018/09/140822AMAS0573-scaled.jpg?fit=862%2C1207&ssl=1'
     },
     {
       name: 'Rahul Gupta',
@@ -315,30 +355,36 @@ const LandingPage = () => {
       </section>
 
       {/* Categories Section */}
-      <section id="categories" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Categories</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover unique handmade products across various traditional and contemporary categories
-            </p>
-          </div>
+      {/* Categories Section */}
+<section id="categories" className="py-20">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Categories</h2>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        Discover unique handmade products across various traditional and contemporary categories
+      </p>
+    </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {categories.map((category, index) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="bg-white rounded-2xl p-6 shadow-sm border hover:shadow-xl transition-all duration-300 text-center group-hover:-translate-y-2">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl text-2xl mb-4 ${category.color}`}>
-                    {category.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
-                  <p className="text-sm text-gray-600">{category.count}</p>
-                </div>
-              </div>
-            ))}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {categories.map((category, index) => (
+        <div key={index} className="group cursor-pointer">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border hover:shadow-xl transition-all duration-300 text-center group-hover:-translate-y-2">
+            <div className="mb-4 overflow-hidden rounded-xl">
+              <img 
+                src={category.image} 
+                alt={category.name}
+                className="w-[130px] h-[100px]  rounded-lg object-cover mx-auto group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
+            <p className="text-sm text-gray-600">{category.count}</p>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Featured Products */}
       <section className="py-20 bg-gray-50">
