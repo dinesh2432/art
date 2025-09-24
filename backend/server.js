@@ -1,66 +1,164 @@
 const express = require('express')
 const cors = require('cors')
-const helmet = require('helmet')
-const compression = require('compression')
-const morgan = require('morgan')
-const rateLimit = require('express-rate-limit')
-const path = require('path')
 require('dotenv').config()
 
-const app = require('./src/app')
-
+const app = express()
 const PORT = process.env.PORT || 5000
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000, // 15 minutes
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS), // limit each IP to 100 requests per windowMs
-  message: {
-    error: 'Too many requests from this IP, please try again later.'
-  }
-})
-
 // Middleware
-app.use(helmet())
-app.use(compression())
-app.use(morgan('combined'))
-app.use(limiter)
-
-// CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
   credentials: true
 }))
 
-app.use(express.json({ limit: '10mb' }))
-app.use(express.urlencoded({ extended: true, limit: '10mb' }))
+app.use(express.json())
 
-// Static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+// Mock products data
+const mockProducts = [
+  {
+    id: 1,
+    name: 'Handmade Ceramic Vase',
+    price: 45.99,
+    originalPrice: 59.99,
+    image: 'https://picsum.photos/400/400?random=1',
+    seller: {
+      name: 'John Potter',
+      location: 'Chennai, Tamil Nadu',
+      rating: 4.8,
+      verified: true
+    },
+    category: 'pottery',
+    rating: 4.7,
+    reviewCount: 23,
+    description: 'Beautiful handcrafted ceramic vase',
+    deliveryTime: '5-7 days',
+    inStock: true,
+    stockCount: 12,
+    isPopular: true,
+    discount: 23,
+    tags: ['handmade', 'ceramic'],
+    createdAt: '2024-01-15T10:30:00Z'
+  },
+  {
+    id: 2,
+    name: 'Wooden Coffee Table',
+    price: 199.99,
+    originalPrice: 249.99,
+    image: 'https://picsum.photos/400/400?random=2',
+    seller: {
+      name: 'Sarah Carpenter',
+      location: 'Bangalore, Karnataka',
+      rating: 4.9,
+      verified: true
+    },
+    category: 'woodwork',
+    rating: 4.8,
+    reviewCount: 45,
+    description: 'Handcrafted oak coffee table',
+    deliveryTime: '10-14 days',
+    inStock: true,
+    stockCount: 5,
+    isPopular: false,
+    discount: 20,
+    tags: ['furniture', 'oak'],
+    createdAt: '2024-01-10T14:20:00Z'
+  }
+]
 
-// Health check
+// Routes
 app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+  res.json({ status: 'OK', timestamp: new Date().toISOString() })
+})
+
+app.get('/api/products', (req, res) => {
+  console.log('Products API called')
+  res.json({
+    success: true,
+    data: {
+      products: mockProducts,
+      pagination: {
+        page: 1,
+        limit: 12,
+        total: mockProducts.length,
+        totalPages: 1
+      }
+    }
   })
 })
 
-// Start server
+app.get('/api/products/:id', (req, res) => {
+  const { id } = req.params
+  const product = mockProducts.find(p => p.id === parseInt(id))
+  
+  if (!product) {
+    return res.status(404).json({
+      success: false,
+      message: 'Product not found'
+    })
+  }
+  
+  res.json({
+    success: true,
+    data: { product }
+  })
+})
+
+// Auth routes
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body
+  
+  res.json({
+    success: true,
+    message: 'Login successful',
+    data: {
+      user: {
+        id: '1',
+        name: 'John Doe',
+        email: email,
+        userType: 'customer'
+      },
+      token: 'mock-jwt-token'
+    }
+  })
+})
+
+app.post('/api/auth/signup', (req, res) => {
+  const { name, email, password } = req.body
+  
+  res.json({
+    success: true,
+    message: 'Account created successfully',
+    data: {
+      user: {
+        id: '1',
+        name: name,
+        email: email,
+        userType: null
+      },
+      token: 'mock-jwt-token'
+    }
+  })
+})
+
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Route not found'
+  })
+})
+
+// Error handler
+app.use((err, req, res, next) => {
+  console.error('Server Error:', err)
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error'
+  })
+})
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-  console.log(`Environment: ${process.env.NODE_ENV}`)
-})
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err, promise) => {
-  console.log('Unhandled Rejection at:', promise, 'reason:', err)
-  process.exit(1)
-})
-
-// Handle uncaught exceptions
-process.on('uncaughtException', (err) => {
-  console.log('Uncaught Exception thrown:', err)
-  process.exit(1)
+  console.log(`🚀 Server running on http://localhost:${PORT}`)
+  console.log(`📊 Health check: http://localhost:${PORT}/health`)
+  console.log(`🛍️  Products API: http://localhost:${PORT}/api/products`)
 })
