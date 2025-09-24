@@ -27,7 +27,7 @@ const LandingPage = () => {
       name: 'Handcrafted Ceramic Vase',
       price: '₹2,499',
       originalPrice: '₹3,299',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNt53IOPLYJfPYa91y_n3lJjO54aqzSPMyxQ&s',
       seller: 'Priya Ceramics',
       rating: 4.8,
       reviews: 156,
@@ -39,7 +39,7 @@ const LandingPage = () => {
       name: 'Wooden Coffee Table',
       price: '₹12,999',
       originalPrice: '₹15,999',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
+      image: 'https://fleck.co.in/cdn/shop/products/Skog_Solid_wood_coffee_table_by_Fleck.jpg?v=1745549643',
       seller: 'Craftsman Woods',
       rating: 4.9,
       reviews: 89,
@@ -51,7 +51,7 @@ const LandingPage = () => {
       name: 'Handwoven Silk Saree',
       price: '₹8,999',
       originalPrice: '₹11,999',
-      image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&h=300&fit=crop',
+      image: 'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcShiNRdh3nt_ciTcw3a6xLurfFY8farWbxvYSXho6Sa3s7G_y9fEC385YZoCu-eYcyfS3KB8ecH8gpuRKMUyiXQx17tWBb9z4p_lVSaVP4G7lXRbxceyaH8m9Cxo4-EFyD_ojlXC-0&usqp=CAc',
       seller: 'Banarasi Silks',
       rating: 4.7,
       reviews: 234,
@@ -63,7 +63,7 @@ const LandingPage = () => {
       name: 'Silver Jewelry Set',
       price: '₹5,499',
       originalPrice: '₹7,299',
-      image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=300&fit=crop',
+      image: 'https://namanarts.in/cdn/shop/files/NAJC_87_da395476-896f-4c3e-abce-5feeea47a05a.jpg?v=1714644750&width=1080',
       seller: 'Royal Jewelers',
       rating: 4.9,
       reviews: 167,
@@ -267,24 +267,24 @@ const LandingPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=400&fit=crop" 
+                    src="https://c8.alamy.com/comp/RYH1EX/lots-of-traditional-ukrainian-handmade-clay-pottery-production-RYH1EX.jpg" 
                     alt="Handmade pottery" 
                     className="rounded-2xl shadow-xl"
                   />
                   <img 
-                    src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300&h=300&fit=crop" 
+                    src="https://i.pinimg.com/736x/43/9f/69/439f69c35cc6ff9e3f1813b7ffd86c18.jpg" 
                     alt="Handmade jewelry" 
                     className="rounded-2xl shadow-xl"
                   />
                 </div>
                 <div className="space-y-4 pt-8">
                   <img 
-                    src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=300&h=300&fit=crop" 
+                    src="https://st.depositphotos.com/1220004/3774/i/450/depositphotos_37741921-mother-of-Pearl-Necklace-with-original-Oyster-for-sale-by-jewele.jpg" 
                     alt="Handmade textiles" 
                     className="rounded-2xl shadow-xl"
                   />
                   <img 
-                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=400&fit=crop" 
+                    src="https://www.shutterstock.com/image-photo/baskets-woven-willow-twigs-container-600nw-565145395.jpg" 
                     alt="Handmade furniture" 
                     className="rounded-2xl shadow-xl"
                   />
